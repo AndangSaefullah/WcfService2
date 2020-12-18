@@ -17,9 +17,9 @@ namespace WcfService2
         public string Insert(InsertUser user)
         {
             string msg;
-            SqlConnection con = new SqlConnection("Data Source=LAPTOP-E77BQ7S0;Initial Catalog=WcfService2;Persist Security Info=True;User ID=sa;Password=123;Pooling=False");
+            SqlConnection con = new SqlConnection("Data Source=LAPTOP-E77BQ7S0;Initial Catalog=WcfService2;User ID=sa;Password=123;Pooling=False");
             con.Open();
-            SqlCommand cmd = new SqlCommand("Insert into dbo.Table (Name, Email) values(@Name, @Email)", con);
+            SqlCommand cmd = new SqlCommand("Insert into UserTab (Name, Email) values(@Name, @Email)", con);
             cmd.Parameters.AddWithValue("@Name", user.Name);
             cmd.Parameters.AddWithValue("@Email", user.Email);
 
@@ -38,9 +38,9 @@ namespace WcfService2
         public gettestdata GetInfo()
         {
             gettestdata g = new gettestdata();
-            SqlConnection con = new SqlConnection("Data Source=LAPTOP-E77BQ7S0;Initial Catalog=WcfService2;Persist Security Info=True;User ID=sa;Password=123;Pooling=False");
+            SqlConnection con = new SqlConnection("Data Source=LAPTOP-E77BQ7S0;Initial Catalog=WcfService2;User ID=sa;Password=123;Pooling=False");
             con.Open();
-            SqlCommand cmd = new SqlCommand("Select * from Table", con);
+            SqlCommand cmd = new SqlCommand("Select * from UserTab", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable("table");
             da.Fill(dt);
@@ -52,9 +52,9 @@ namespace WcfService2
         {
             string Message = "";
 
-            SqlConnection con = new SqlConnection("Data Source=LAPTOP-E77BQ7S0;Initial Catalog=WcfService2;Persist Security Info=True;User ID=sa;Password=123;Pooling=False");
+            SqlConnection con = new SqlConnection("Data Source=LAPTOP-E77BQ7S0;Initial Catalog=WcfService2;User ID=sa;Password=123;Pooling=False");
             con.Open();
-            SqlCommand cmd = new SqlCommand("Update Table set Name = @Name, Email = @Email where UserID = @UserID", con);
+            SqlCommand cmd = new SqlCommand("Update UserTab set Name = @Name, Email = @Email where UserID = @UserID", con);
             cmd.Parameters.AddWithValue("@UserID", u.UID);
             cmd.Parameters.AddWithValue("@Name", u.Name);
             cmd.Parameters.AddWithValue("@Email", u.Email);
@@ -73,9 +73,9 @@ namespace WcfService2
         public string Delete(DeleteUser d)
         {
             string msg = "";
-            SqlConnection con = new SqlConnection("Data Source=LAPTOP-E77BQ7S0;Initial Catalog=WcfService2;Persist Security Info=True;User ID=sa;Password=123;Pooling=False");
+            SqlConnection con = new SqlConnection("Data Source=LAPTOP-E77BQ7S0;Initial Catalog=WcfService2;User ID=sa;Password=123;Pooling=False");
             con.Open();
-            SqlCommand cmd = new SqlCommand("delete Table where UserID = @UserID", con);
+            SqlCommand cmd = new SqlCommand("delete UserTab where UserID = @UserID", con);
             cmd.Parameters.AddWithValue("@UserID", d.UID);
             int res = cmd.ExecuteNonQuery();
             if (res == 1)
@@ -90,3 +90,4 @@ namespace WcfService2
         }
     }
 }
+

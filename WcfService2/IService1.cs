@@ -15,9 +15,10 @@ namespace WcfService2
     {
 
         [OperationContract]
-        string Insert(InsertUser user);
+        string Insert(InsertUser value);
         [OperationContract]
         gettestdata GetInfo();
+
         [OperationContract]
         string Update(UpdateUser u);
         [OperationContract]
@@ -25,9 +26,6 @@ namespace WcfService2
 
         // TODO: Add your service operations here
     }
-
-
-    // Use a data contract as illustrated in the sample below to add composite types to service operations.
     [DataContract]
     public class gettestdata
     {
@@ -39,6 +37,8 @@ namespace WcfService2
         }
     }
 
+
+    // Use a data contract as illustrated in the sample below to add composite types to service operations.
     [DataContract]
     public class InsertUser
     {
